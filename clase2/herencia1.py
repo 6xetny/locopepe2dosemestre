@@ -27,14 +27,22 @@ class Moto(Vehiculo):
         print(f"{self.marca} {self.modelo} arranca con rugido fuerte.")
 
 #programa principal 
-vehiculo = Vehiculo("Suzuki", "Vitara")
-vehiculo.mostrar_info()
-vehiculo.encender()
+# vehiculo = Vehiculo("Suzuki", "Vitara")
+# vehiculo.mostrar_info()
+# vehiculo.encender()
 
-auto = Auto("BMW","M3", 2010)
-auto.mostrar_info()
-auto.encender()
+# auto = Auto("BMW","M3", 2010)
+# auto.mostrar_info()
+# auto.encender()
         
-moto = Moto("Yamaha", "R6")
-moto.mostrar_info()
-moto.encender()
+# moto = Moto("Yamaha", "R6")
+# moto.mostrar_info()
+# moto.encender()
+
+vehiculos = [Vehiculo("Suzuki", "Vitara"),
+            Auto("BMW","M3", 2010),
+            Moto("Yamaha","R6   ")]
+
+for v in vehiculos:
+    v.encender()
+
