@@ -80,3 +80,16 @@ WHERE departamento = 'Ventas' AND
 -- Actualizar todos los registros 
 UPDATE productos
     SET precio = precio * 1.05;
+
+-- La sentencia DELETE elimina el registro de una tabla 
+-- ELIMINAR UN REGISTRO ESPECÍFICO 
+DELETE FROM personal
+    WHERE id = 3;
+
+-- Eliminar múltiples registros con condición 
+DELETE FROM personal
+    WHERE salario > 600000 AND
+        departamento ='Marketing';
+
+-- Eliminar todos los registro 
+DELETE FROM personal;
