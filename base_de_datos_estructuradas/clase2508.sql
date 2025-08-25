@@ -93,3 +93,27 @@ DELETE FROM personal
 
 -- Eliminar todos los registro 
 DELETE FROM personal;
+
+-- Obtener todos los registros de la tabla personal.
+SELECT * FROM personal;
+
+-- obtener el nombre y el correo electronico de la tabla personal.
+SELECT nombre, email FROM personal;
+
+-- SELECCIONAR los registros de personal cuya ciudad es "Temuco".
+SELECT * FROM personal WHERE ciudad = 'Temuco';
+
+-- Para encontrar registros de personal cuyo nombre comience con "A".
+SELECT * FROM personal WHERE nombre LIKE 'A%';
+
+-- Para seleccionar usuarios de las ciudades de "Temuco" o "Concepción":
+SELECT * FROM personal
+    WHERE ciudad IN ('Temuco','Concepción');
+
+-- para obtener la lista de personal ordenada alfabetico por nombre.
+SELECT * FROM personal ORDER BY nombre ASC;
+-- PARA OBTENER ORDENADOS DE LA "Z" A LA "A".
+SELECT * FROM personal ORDER BY nombre DESC;
+
+-- para obtener una lista de ciudades unicas en las que residen los usuarios sin repeticiones.
+SELECT DISTINCT ciudad FROM personal;
