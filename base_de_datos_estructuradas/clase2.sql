@@ -8,3 +8,11 @@ show databases;
 select table_name
 from information_schema.tables
 where table_schema = "empresa";
+
+select column_name, 
+        data_type,
+        is_nullable,
+        column_default
+from information_schema.columns 
+where table_schema = 'empresa' AND 
+    table_name = 'personal';
