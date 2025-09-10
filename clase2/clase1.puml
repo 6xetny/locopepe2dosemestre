@@ -1,1 +1,5 @@
-pero que cojones tio
+inventario_poo
+ - producto.py #clase Producto encapsulamiento)
+ - invetario.py # Clase Inventario CRUD en memoria + carga CSV
+ - app.py #menu de 3 o 4 opciones (programa principal)
+ - dara.csv # persiente
