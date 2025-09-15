@@ -51,3 +51,22 @@ create view empleados_detalles as
         end as nivel_salario
         from empleados e 
         inner join departamentos d on e.departamento_id= d.id;
+
+-- usar como una tabla normal 
+select * from empleados_alto_salario;
+
+-- INSERT (solo vistas simples actualizables)
+insert into empleados_alto_salario(id,nombre, salario)
+    values (200,'PIP3LG', 1550000);
+
+-- UPDATE 
+update empleados_alto_salario
+    set salario = salario * 1.1 
+    where id = 10;
+
+-- DELETE
+delete from empleados_alto_salario
+    where salario < 1100000;
+
+-- Elimina la vistas empleados_alto_salario
+drop view empleados_alto_salario;
