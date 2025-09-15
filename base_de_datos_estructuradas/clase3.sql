@@ -20,7 +20,7 @@ insert into departamentos(id, nombre, presupuesto) values(0,'Ventas',12000000);
 insert into departamentos(id, nombre, presupuesto) values(1,'Contabilidad',14000000);
 
 insert into empleados(id, nombre, departamento_id, salario,fecha_contrato) values(0,'P1P3LG', 0, 2000000,'2024-09-11');
-insert into empleados(id, nombre, departamento_id, salario,fecha_contrato) values(1,'CeciliaGames', 1, 1000000,'2025-09-07');
+insert into empleados(id, nombre, departamento_id, salario,fecha_contrato) values(1,'ZekiraGames', 1, 1000000,'2024-12-07');
 insert into empleados(id, nombre, departamento_id, salario,fecha_contrato) values(2,'6xet', 0, 2000000,'2024-10-13');
 insert into empleados(id, nombre, departamento_id, salario,fecha_contrato) values(3,'MeLlamoCesarjsjs', 1, 500000,'2024-11-14');
 
@@ -36,6 +36,7 @@ create view empleados_nuevos as
     from empleados
     where year (fecha_contrato)= year(curdate());
 
+-- vista compleja: empleados con información del departamento
 create view empleados_detalles as 
     select 
         e.id,
