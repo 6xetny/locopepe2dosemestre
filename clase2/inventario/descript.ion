@@ -1,0 +1,5 @@
+inventario_poo
+ - producto.py #clase Producto encapsulamiento)
+ - inventario.py # Clase Inventario CRUD en memoria + carga CSV
+ - app.py #menu de 3 o 4 opciones (programa pincipal)
+ - data.csv # persistencia por ahora , simple
