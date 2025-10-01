@@ -18,6 +18,7 @@ stock = int (input("Ingrese cantidad: "))
 
 cursor.execute("""INSERT INTO producto (nombre, precio,stock)
                 VALUES (%s, %s, %s)""", (nombre,precio,stock))
+conexion.commit()
 
 # filas = cursor.fetchall()
 # print("Tablas", filas)
