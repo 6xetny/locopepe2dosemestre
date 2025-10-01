@@ -62,7 +62,7 @@ class Inventario:
     def guardar_a_csv(self, ruta_csv="data.csv"):
         with open(ruta_csv, mode="w", newline="", encoding="utf-8") as f:
             campos = ["codigo", "nombre", "precio", "stock"]
-            writer = csv.DictWriter(f, fieldnames=campos, delimiter=",")
+            writer = csv.DictWriter(f, fieldnames=campos)
             writer.writeheader()
             for p in self._items:
                 writer.writerow({
