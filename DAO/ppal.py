@@ -4,6 +4,14 @@ from persona_dao import PersonaDAO
 # Crear instancia de PersonaDAO
 persona_dao = PersonaDAO()
 
+print('1.- Crear')
+print('2.- Listar')
+print('3.- Actualizar')
+print('4.- Eliminar')
+print('5.- Salir')
+
+# if op == '1':
+
 # Crear nueva persona
 nueva_persona = Persona(None, 'Juan Perez', 30)
 persona_dao.insertar(nueva_persona)
