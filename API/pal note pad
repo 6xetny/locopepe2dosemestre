@@ -1,0 +1,48 @@
+"https://api.openweathermap.org/data/2.5/weather?id=3868158&appid=ab6b9237c5b8529a2b9f0961da7d4de7&units=metric&lang=es"
+
+-- JSON:
+
+{
+    "coord": {
+      "lon": -72.2279,
+      "lat": -39.2857
+    },
+    "weather": [
+      {
+        "id": 804,
+        "main": "Clouds",
+        "description": "nubes",
+        "icon": "04d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 9.39,
+      "feels_like": 8.33,
+      "temp_min": 9.39,
+      "temp_max": 9.39,
+      "pressure": 1019,
+      "humidity": 97,
+      "sea_level": 1019,
+      "grnd_level": 979
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 2.19,
+      "deg": 296,
+      "gust": 5.34
+    },
+    "clouds": {
+      "all": 100
+    },
+    "dt": 1760536974,
+    "sys": {
+      "country": "CL",
+      "sunrise": 1760522488,
+      "sunset": 1760569646
+    },
+    "timezone": -10800,
+    "id": 3868158,
+    "name": "Villarrica",
+    "cod": 200
+  }
