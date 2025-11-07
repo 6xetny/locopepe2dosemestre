@@ -6,7 +6,7 @@ from datetime import date
 import requests
 
 
-RUTA_BD = "poos.fb"
+RUTA_BD = "poos.db"
 ITERACIONES = 120_000
 
 def obtener_db():
