@@ -59,4 +59,38 @@ SELECT
     END AS descripcion_talla
 FROM ropa;
 
+-- Expresion CASE (Forma buscada):
+SELECT 
+    apellido,
+    salario, 
+    CASE
+        WHEN Salario < 500000 THEN 'Bajo'
+        WHEN salario BETWEEN 500000 AND 1000000 THEN 'Medio'
+        WHEN salario > 1000000 THEN 'Alto'
+        ELSE 'No especificado' 
+    END AS rango_salarial
+FROM personal;
 
+-- IFNULL()
+Retorna el primer valor si no es NULL, de lo contrario retorna el segundo.
+
+SELECT 
+    apellido, 
+    IFNULL(departamento,'Sin departamento') AS contacto 
+FROM personal;
+
+-- NULLIF()
+Retirna NULL si ambas expresiones son iguales, de lo contrario retorna la primera.
+
+SELECT 
+    nombreproducto,
+    NULLIF(stock,0) AS cantidad_valida
+FROM producto;
+
+-- COALESCE()
+Retorna el primer valor no NULL de la lista:
+
+SELECT 
+    nombre,
+    COALESCE(email,celular,'Sin contacto') AS contacto_disponible
+FROM usuario;
