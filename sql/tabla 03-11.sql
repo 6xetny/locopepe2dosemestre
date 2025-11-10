@@ -21,3 +21,9 @@ SELECT producto,round(CAST(precio as decimal(10,2))*CAST(cantidad as decimal(10,
 -- Mostrar todos los productos vendedidos entre el 5 y el 15 de octubre del 2025(Filtrar por rango de fechas)
 SELECT * from ventas WHERE cast(fecha_venta as date) > '2025-10-05' and cast(fecha_venta as date) < '2025-10-15';
 SELECT * from ventas WHERE cast(fecha_venta as date) BETWEEN '2025-10-05' and '2025-10-15';
+
+-- Genere un listado de productos, en donde  se despliegue el producto y su precio, ordenado numericamente de menor a mayor precio.
+SELECT producto, precio from ventas order by cast(precio as decimal(10,2)) ASC; 
+
+-- Generar una salida de tabla ventas con el producto, el precio con el simbolo "$", la cantidad y la fecha en formato dd/mm/aaaa
+SELECT producto, concat("$", precio) as precio_formato, cantidad, date_format(cast(fecha_venta as date),'%d/%m/%Y') as fecha_formato from ventas; 
