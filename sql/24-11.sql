@@ -1657,3 +1657,5 @@ SELECT cliente, SUM(total_pedido) as gasto_total
     FROM pedidos
     GROUP BY cliente
     HAVING gasto_total > 1000000;
+
+-- SELECCIONAR A LOS VENDEDORES QUE HAN VENDIDO MAS DE $500.000 EN TOTAL
