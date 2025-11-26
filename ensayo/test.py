@@ -28,14 +28,6 @@ def iniciar_base_datos():
             fecha_consulta TEXT
         )
     ''')
-    
-    # Usuario por defecto para probar
-    cursor.execute("SELECT * FROM usuarios WHERE usuario = 'admin'")
-    if not cursor.fetchone():
-        pass_hash = hashlib.sha256("admin123".encode()).hexdigest()
-        cursor.execute("INSERT INTO usuarios VALUES (?, ?)", ('admin', pass_hash))
-        conn.commit()
-    
     conn.close()
 
 class ProcesadorAPI:
@@ -101,7 +93,25 @@ def ver_historial():
     for d in datos:
         print(f"{d[1]} | ${d[2]} | {d[3]} | User: {d[4]} | Hora: {d[5]}")
 
+def crear_usuario():
+    print("\n--- REGISTRO DE USUARIO ---")
+    nuevo_usuario = input("Ingresa nuevo usuario: ")
+    nueva_clave = input("Ingresa nueva contraseña: ")
+    
+    clave_hash = hashlib.sha256(nueva_clave.encode()).hexdigest()
+    
+    try:
+        conn = sqlite3.connect(DB_NAME)
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO usuarios VALUES (?, ?)", (nuevo_usuario, clave_hash))
+        conn.commit()
+        conn.close()
+        print("¡Usuario creado con éxito!")
+    except:
+        print("Error: El usuario ya existe.")
+
 def login():
+    print("\n--- INICIAR SESIÓN ---")
     usuario = input("Usuario: ")
     clave = input("Contraseña: ")
     
@@ -118,18 +128,33 @@ def login():
     else:
         return None
 
-def menu():
+def menu_principal():
     iniciar_base_datos()
     
-    print("--- LOGIN ---")
-    usuario_actual = login()
+    usuario_actual = None
     
-    if not usuario_actual:
-        print("Credenciales incorrectas. Adiós.")
-        return
+    while usuario_actual is None:
+        print("\n1. Iniciar Sesión")
+        print("2. Registrar Nuevo Usuario")
+        print("3. Salir")
+        opcion_inicio = input("Elige: ")
+        
+        if opcion_inicio == "1":
+            usuario_actual = login()
+            if not usuario_actual:
+                print("Credenciales incorrectas.")
+        elif opcion_inicio == "2":
+            crear_usuario()
+        elif opcion_inicio == "3":
+            print("Adiós.")
+            return
+        else:
+            print("Opción no válida.")
 
+    # Una vez logueado, entramos al menú del sistema
     while True:
-        print("\n1. Consultar UF y Euro")
+        print(f"\n--- MENÚ ECOTECH (Usuario: {usuario_actual}) ---")
+        print("1. Consultar UF y Euro")
         print("2. Ver Historial")
         print("3. Salir")
         
@@ -144,10 +169,10 @@ def menu():
             ver_historial()
             
         elif opcion == "3":
-            print("Saliendo...")
+            print("Cerrando sesión...")
             break
         else:
             print("Opción no válida")
 
 if __name__ == "__main__":
-    menu()
+    menu_principal()
