@@ -1655,7 +1655,37 @@ SELECT cliente, COUNT(id) as total_pedidos
 -- CALCULAR EL MONTO TOTAL DE COMPRAS DE CADA CLIENTE POR CONCEPTO DE PEDIDOS, DE AQUELLOS CLIENTES QUE ACUMULEN PEDIDOS POR OSBRE $1.000.000
 SELECT cliente, SUM(total_pedido) as gasto_total
     FROM pedidos
-    GROUP BY cliente
+    GROUP BY cliente;
     HAVING gasto_total > 1000000;
 
 -- SELECCIONAR A LOS VENDEDORES QUE HAN VENDIDO MAS DE $500.000 EN TOTAL
+SELECT vendedor, SUM(cantidad * precio) as ventas_total
+    FROM ventas
+    GROUP BY vendedor
+    HAVING ventas_total > 500000;
+
+-- CALCULAR EL SALARIO PROMEDIO POR DEPARTAMENTO, MOSTRANDO SOLO DEPARTAMENTOS CON MAS DE 3 EMPLEADOS
+SELECT departamento, COUNT(*) as num_empleados, AVG(sueldo) as sueldo_promedio
+    FROM personal
+    GROUP BY departamento
+    HAVING COUNT(*) > 3;
+
+-- Encuentra el total de ventas por categoria de producto para el año 2024, ordenado de mayor a menor
+SELECT categoria, SUM(precio * cantidad) as ventas_totales
+    FROM ventas 
+    WHERE YEAR(fecha)= "2024"
+    GROUP BY categoria
+    ORDER BY ventas_totales desc;
+
+-- Por cada departamento, muestra el sueldo minimo, sueldo maximo, sueldo promedio y total de personas, solo para empleados que ingresaron despues del 2020
+SELECT departamento, MIN(sueldo) as sueldo_minimo, MAX(sueldo) as sueldo_maximo, AVG(sueldo) as sueldo_promedio, COUNT(*) as total_personas
+    FROM personal
+    WHERE YEAR(fecha_ingreso) > "2020"
+    GROUP BY departamento;
+
+-- AGRUPA LA VENTAS POR MES Y CATEGORIA, MOSTRANDO LA CANTIDAD TOTAL VENDIDA Y EL INGRESO TOTAL, SOLO PARA MESES CON VENTAS SUPERIORES A $100000, ADEMAS DEBE ESTAR ORDENADO POR AÑO, MAS E INGRESO TOTAL
+SELECT YEAR(fecha) as año, MONTH(fecha) as mes, categoria, SUM(cantidad) as cantidad_total, SUM(cantidad * precio) as ingreso_total
+    FROM ventas
+    GROUP BY YEAR(fecha), MONTH(fecha), categoria
+    HAVING SUM(cantidad * precio)> 10000
+    ORDER BY año, mes, ingreso_total;
